@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <title>News Summarizer</title>
+</head>
+<body>
+    <br>
+    <form action="/summarize-bulk" method="POST" enctype="multipart/form-data">
+        <input type="file" id="csv" name="csv" class="form-control"/>
+        <br>
+        <div style="display: block; margin-left: auto; margin-right: auto; align-content: center; padding-left: 30%;">
+            <label for="ratio" style="margin-left: auto; margin-right: auto;">Choose the ratio :</label>
+            <select id="ratio" style=" margin-right: 5%;" name="ratio">
+                <option value="20">20 %</option>
+                <option value="40">40 %</option>
+                <option value="60">60 %</option>
+                <option value="80">80 %</option>
+            </select> 
+            <button class="btn btn-secondary" style="width: 50%;">Summarize!</button>
+        </div>
+        <br>
+
+    </form> 
+</body>
+</html>

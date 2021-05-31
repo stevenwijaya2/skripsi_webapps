@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  <style>
+
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        align-items: center;
+        background: #d8aa96;
+        color: rgba(0, 0, 0, .8);
+        display: grid;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100vh;
+        justify-items: center;
+        weight: 100vw;
+    }
+    .signup-container {
+        display: grid;
+        grid-template-areas: "left right";
+        max-width:90%;
+    }
+    .left-container {
+        background: #807182;
+        overflow: hidden;
+        padding: 40px 0 0 0;
+        position: relative;
+        text-align: center;
+        width: 400px;
+    }
+    .left-container h1 {
+        color: rgba(0, 0, 0, .8);
+        display: inline-block;
+        font-size: 24px;
+    }
+    .left-container h1 i {
+        background: #f7b1ab;
+        border-radius: 50%;
+        color: #807182;
+        font-size: 24px;
+        margin-right: 5px;
+        padding: 10px;
+        transform: rotate(-45deg);
+    }
+    .left-container .puppy {
+        bottom: -5px;
+        position: absolute;
+        text-align: center;
+    }
+    .left-container .puppy:before {
+        content: "";
+        height: 100%;
+        left: 0;
+        opacity: 0.4;
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+    }
+    .left-container img {
+        width: 70%;
+    }
+    .right-container {
+        background: #f9c7c2;
+        display: grid;
+        grid-template-areas: "." ".";
+        width: 1200px;
+    }
+    .right-container h1:nth-of-type(1) {
+        color: rgba(0, 0, 0, .8);
+        font-size: 28px;
+        font-weight: 600;
+    }
+    .right-container .set {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+    .right-container input {
+        border: 1px solid rgba(0, 0, 0, .1);
+        border-radius: 4px;
+        height: 38px;
+        line-height: 38px;
+        padding-left: 5px;
+    }
+    .right-container input, .right-container label {
+        color: rgba(0, 0, 0, .8);
+    }
+    .right-container textarea{
+        border: 1px solid rgba(0, 0, 0, .1);
+        border-radius: 15px;
+        height: 130px;
+        line-height: 38px;
+        padding-left: 5px;
+        width: 1100px;
+    }
+     .right-container textarea {
+        color: rgba(0, 0, 0, .8);
+    }
+    .right-container header {
+        padding: 40px;
+    }
+    .right-container label, .right-container input, .right-container .pets-photo{
+        width: 176px;
+    }
+    .right-container .pets-photo {
+        align-items: center;
+        display: grid;
+        grid-template-areas: ". .";
+    }
+    .right-container .pets-photo button {
+        border: none;
+        border-radius: 50%;
+        height: 38px;
+        margin-right: 10px;
+        outline: none;
+        width: 38px;
+    }
+    .right-container .pets-photo button i {
+        color: rgba(0, 0, 0, .8);
+        font-size: 16px;
+    }
+    .right-container .pets-weight .radio-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .slider {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .right-container footer {
+        align-items: center;
+        background: #fff;
+        display: grid;
+        padding: 5px 40px;
+    }
+    .right-container footer button {
+        border: 1px solid rgba(0, 0, 0, .2);
+        height: 38px;
+        line-height: 38px;
+        width: 100px;
+        border-radius: 19px;
+        font-family: 'Montserrat', sans-serif;
+    }
+    .right-container footer #back {
+        background: #fff;
+        transition: 0.2s all ease-in-out;
+    }
+    .right-container footer #back:hover {
+        background: #171a2b;
+        color: white;
+    }
+    .right-container footer #next {
+        background: #dc3545;
+        border: 1px solid transparent;
+        color: #fff;
+    }
+    .right-container footer #next:hover {
+        background: #171a2b;
+    }
+    .pets-name label, .pets-breed label, .pets-birthday label, .pets-gender label, .pets-spayed-neutered label, .pets-weight label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .radio-container {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, .1);
+        border-radius: 20px;
+        display: inline-block;
+        padding: 5px;
+    }
+    .radio-container label {
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 20px;
+        display: inline-block;
+        height: 26px;
+        line-height: 26px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        transition: 0.2s all ease-in-out;
+        width: max-content + 10px;
+    }
+    .radio-container input[type="radio"] {
+        display: none;
+    }
+    .radio-container input[type="radio"]:checked + label {
+        background: #f7b1ab;
+        border: 1px solid rgba(0, 0, 0, .1);
+    }
+
+    .slider {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      -webkit-appearance: none;
+      width: 100%;
+      height: 15px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: red;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: red;
+      cursor: pointer;
+    }
+
+  </style>
+  <title>News Summarizer</title>
+</head>
+<body>
+  <div class="signup-container">
+    <div class="left-container">
+      <h1>
+        Single Article Summarizer
+      </h1>
+      <h4 style="font-size: 15px; color: yellow;">here is swole doge! to make you feel superior today</h4>
+      <h4 style="font-size: 15px; color: greenyellow; text-align: right; padding-right: 20px;">so cool!   </h4>
+      <Strong><h4 style="font-size: 15px; color:black; text-align: left; padding-left: 20px;">you look good today !   </h4></Strong>
+      <Strong><h4 style="font-size: 15px; color:rebeccapurple; text-align: center; padding-left: 20px;">what a great summary ?!   </h4></Strong>
+      <Strong><h4 style="font-size: 15px; color:white; text-align: left; padding-left: 80px;">WOW !   </h4></Strong>
+      <Strong><h4 style="font-size: 15px; color:blue; text-align: right; padding-right: 100px;">great article !   </h4></Strong>
+      <Strong><h4 style="font-size: 15px; color:yellow; text-align: right; padding-right: 80px;">WOW !   </h4></Strong>
+
+
+
+      <div class="puppy">
+        <img src="https://i.pinimg.com/originals/5c/10/6e/5c106e7f7095aef477091236a41d3d57.png"/>
+      </div>
+    </div>
+    <div class="right-container">
+      <header>
+        <h1>Yay, Now You Don't Need To Read The Whole News! </h1>
+        <br>
+        <div class="set">
+          <div class="pets-name">
+            <label for="original_article" style="width: max-content;"> Paste Your longgg... longgg.... longgg.... news here</label>
+            <textarea id="original_article" name="original_article" rows="6" required>{{original_article}}</textarea>
+          </div>
+        </div>
+        <br>
+        <div class="pets-weight">
+          <label for="pet-weight-0-25" style="width: max-content;">How short do you want ? length does matter right ?</label>
+          <div class="radio-container compression">
+            <input id="percentage" name="compression" type="radio" value="percentage"></input>
+            <label for="percentage">Percentage (Type) </label>
+            <input id="percentage-slider" name="compression" type="radio" value="percentage-slider"></input>
+            <label for="percentage-slider">Percentage (slider) </label>
+            <input id="fixed" name="compression" type="radio" value="fixed"></input>
+            <label for="fixed">Amount of sentence</label>
+          </div>
+        </div>
+        <br>
+        <div class="pets-weight box-1" style="display: none;" >
+          <label for="pet-weight-0-25" style="width: 100%; text-align: center;"> FYI : If You Type 20 , Summary Length Is 20% Of Your Original News !</label>
+          <div class="radio-container compression" style="width: 100%; align-content: center; text-align: center; justify-content: center;">
+            <input id="percentage-value" name="percentage-value" type="number" class="pets-name" min="1" max="100" style="  border: 2px solid black; border-radius: 20px;" placeholder="Example : 20 "> </input>
+          </div>
+        </div>
+
+
+        <div class="pets-weight box-2" style="display: none;" >
+          <label for="pet-weight-0-25" style="width: 100%; text-align: center;"> FYI : If You Choose 20% , Summary Length Is 20% Of Your Original News ! <strong> Current Value : <span id="percentage-span"></span> % </strong></label>
+          <div class="radio-container compression" style="width: 100%; align-content: center; text-align: center; justify-content: center;">
+            <input type="range" min="1" max="100" value="20" class="slider" name="compression-value" id="compression-slider" style="width: 90%; height: 15px;">
+          </div>
+        </div>
+
+        <div class="pets-weight box-3" style="display: none;" >
+          <label for="pet-weight-0-25" style="width: 100%; text-align: center;"> FYI : If You Type 20, There Will Be 20 Sentence in Your Summary !</label>
+          <div class="radio-container compression" style="width: 100%; align-content: center; text-align: center; justify-content: center;">
+            <input id="fixed-value" name="fixed-value" type="number" class="pets-name " min="1" max="100" style="  border: 2px solid black; border-radius: 20px;" placeholder="Example : 20 "> </input>
+          </div>
+        </div>
+        <br>
+        <div class="pets-weight">
+          <label for="pet-weight-0-25" style="width: 100%; text-align: center;"> Pick Your MMR Lambda! Its between 0 - 1 , 0 means more diverse summary and 1 means more accurate summary</label>
+          <div class="radio-container compression" style="width: 100%; align-content: center; text-align: center; justify-content: center;">
+            <input id="lambda-value" name="lambda-value" type="number" class="pets-name " min="1" max="100" style="  border: 2px solid black; border-radius: 20px;" placeholder="Example : 0.8"> </input>
+          </div>
+        </div>
+
+        <br>
+        <div class="set">
+          <div class="pets-name">
+            <label for="summary" style="width: max-content;"> Here Is Your Shorttt... Shorttt.... Shorttt.... News</label>
+            <textarea id="summary" name="summary" rows="6" required readonly>{{summary}}</textarea>
+          </div>
+        </div>
+
+      </header>
+      <footer>
+        <div class="set">
+          <a href="/multi"><button id="back" style="width: max-content; padding-right: 15px; padding-left: 15px;">Got a lot of News?</button></a>
+          <button id="next"  style="width: 800px;" onclick="SendForm()"><strong>Summarize !</strong></button>
+        </div>
+      </footer>
+    </div>
+  </div>
+  
+
+  <form action="/summarize" method="POST" id="form-to-sent" name="form-to-sent">
+    <input type="hidden" name="compression-form-type" id="compression-form-type">
+    <input type="hidden" name="compression-form-value" id="compression-form-value">
+    <input type="hidden" name="form-news" id="form-news">    
+    <input type="hidden" name="form-lambda" id="form-lambda">    
+  </form> 
+  </body>
+</html>
+
+<script>
+  $('input[name="compression"]') // select the radio by its id
+    .change(function(){ // bind a function to the change event
+        if( $(this).is(":checked") ){ // check if the radio is checked
+            var val = $(this).val(); // retrieve the value
+            $(".box-1").css("display", "none");
+            $(".box-2").css("display", "none");
+            $(".box-3").css("display", "none");
+
+            if(val === "percentage") {
+              $(".box-1").css("display", "block");
+            }
+            if(val === "percentage-slider") {
+              $(".box-2").css("display", "block");
+            }
+            if(val === "fixed") {
+              $(".box-3").css("display", "block");
+            }
+
+        }
+    });
+
+    $('#compression-value').change(function(){ 
+      var value = $(this).val();
+      alert(value)
+    });
+  
+
+  var slider = document.getElementById("compression-slider")
+  var output = document.getElementById("percentage-span")
+  output.innerHTML = slider.value
+
+  slider.oninput = function() {
+    output.innerHTML = slider.value;
+  }
+
+  function SendForm(){
+    var news =  $('#original_article').val()
+    var type =  $('input[name="compression"]:checked').val()
+    var lambda = $('#lambda-value').val()
+    var value
+    var valid = true
+
+    //empty news
+    if (news == ""){
+      valid = false
+      alert("We Cant Read Your News, Do You Try to Summarize John Chena ? ")
+    }
+
+    //type has not choosen
+    if (type == undefined){
+      valid = false
+      alert("Please Pick The Compression Ratio Method That You Want...")
+    }
+
+
+    //percentage input handler
+    if(type === "percentage") {
+      value = $('#percentage-value').val()
+      if (value == "") {
+        //empty value
+        valid = false
+        alert("Please Pick The Compression Ratio That You Want...")
+      }
+      else {
+        //out of range value
+        if(value < 1 || value > 100 ) { 
+          valid = false
+          alert("Pick Number between 1-100")
+        }
+      }
+      
+    }
+
+    //slider handler
+    if(type === "percentage-slider") {
+      value = $('#compression-slider').val()
+    }
+
+    //fixed handler
+    if(type === "fixed") {
+      value = $('#fixed-value').val()
+      if (value == "") {
+        //empty sentence length
+        valid = false
+        alert("Please Pick The Sentence Length That You Want...")
+      }
+    }    
+    
+    if (lambda == "") {
+      //lambda default
+      lambda = 0.8
+    }
+    else {
+      //out of range lambda
+      if(lambda < 0 || lambda > 1 ) { 
+        valid = false
+        alert("Pick Lambda between 0 - 1")
+      }
+    }
+    if(valid == true) {
+      $('#compression-form-type').val(type)
+      $('#compression-form-value').val(value)
+      $('#form-news').val(news)
+      $('#form-lambda').val(lambda)
+      $('#form-to-sent').submit()
+    }
+
+  }
+</script>
